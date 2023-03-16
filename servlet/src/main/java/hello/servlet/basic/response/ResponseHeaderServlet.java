@@ -26,7 +26,7 @@ public class ResponseHeaderServlet extends HttpServlet {
         //[Header 편의 메서드]
         content(response);
         cookie(response);
-//        redirect(response);
+        redirect(response);
         //[message body]
         PrintWriter writer = response.getWriter();
         writer.println("ok");
@@ -49,4 +49,12 @@ public class ResponseHeaderServlet extends HttpServlet {
         response.addCookie(cookie);
     }
 
+    private void redirect(HttpServletResponse response) throws IOException {
+        //Status Code 302
+        //Location: /basic/hello-form.html
+
+        //response.setStatus(HttpServletResponse.SC_FOUND); //302
+        // response.setHeader("Location", "/basic/hello-form.html");
+        response.sendRedirect("/basic/hello-form.html");
+    }
 }
